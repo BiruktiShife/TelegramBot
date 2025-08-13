@@ -29,7 +29,12 @@ const products = [
   },
 ];
 
-export default function ProductDetail({ params }: { params: { id: string } }) {
+type ProductDetailPageProps = {
+  params: { id: string };
+};
+
+export default async function ProductDetailPage(props: ProductDetailPageProps) {
+  const params = await props.params;
   const product = products.find((p) => p.id === Number(params.id));
   if (!product) return notFound();
 
